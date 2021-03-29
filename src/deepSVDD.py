@@ -79,11 +79,12 @@ class DeepSVDD(object):
             self.trainer = DeepSVDDTrainer(self.objective, self.R, self.c, self.nu,
                                            device=device, n_jobs_dataloader=n_jobs_dataloader)
 
-        self.trainer.test(dataset, self.net)
+        scores, labels = self.trainer.test(dataset, self.net)
         # Get results
         self.results['test_auc'] = self.trainer.test_auc
         self.results['test_time'] = self.trainer.test_time
         self.results['test_scores'] = self.trainer.test_scores
+        return  scores, labels
 
     def pretrain(self, dataset: BaseADDataset, optimizer_name: str = 'adam', lr: float = 0.001, n_epochs: int = 100,
                  lr_milestones: tuple = (), batch_size: int = 128, weight_decay: float = 1e-6, device: str = 'cuda',

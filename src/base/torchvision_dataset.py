@@ -5,8 +5,8 @@ from torch.utils.data import DataLoader
 class TorchvisionDataset(BaseADDataset):
     """TorchvisionDataset class for datasets already implemented in torchvision.datasets."""
 
-    def __init__(self, root: str):
-        super().__init__(root)
+    def __init__(self):
+        super().__init__('placeholder')
 
     def loaders(self, batch_size: int, shuffle_train=True, shuffle_test=False, num_workers: int = 0) -> (
             DataLoader, DataLoader):
