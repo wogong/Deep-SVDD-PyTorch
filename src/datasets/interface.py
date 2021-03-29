@@ -40,8 +40,8 @@ class FMNIST(TorchvisionDataset):
 
     def __init__(self, normal_class, ratio):
         super().__init__()
-        transform_train = transforms.Compose([transforms.Resize(28), transforms.ToTensor(), ])
-        transform_test = transforms.Compose([transforms.Resize(28), transforms.ToTensor(), ])
+        transform_train = transforms.Compose([transforms.ToPILImage(), transforms.Resize(28), transforms.ToTensor(), ])
+        transform_test = transforms.Compose([transforms.ToPILImage(), transforms.Resize(28), transforms.ToTensor(), ])
 
         x_train, y_train = load_fashion_mnist_with_outliers(normal_class, ratio)
 
