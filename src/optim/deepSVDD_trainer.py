@@ -146,7 +146,7 @@ class DeepSVDDTrainer(BaseTrainer):
         # Compute AUC
         _, labels, scores = zip(*idx_label_score)
         labels = np.array(labels)
-        scores = np.array(scores)
+        scores = -1 * np.array(scores)
 
         self.test_auc = roc_auc_score(labels, scores)
         logger.info('Test set AUC: {:.2f}%'.format(100. * self.test_auc))
